@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} добро пожаловать в блок {% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'posts/css/index.css' %}">
+</head>
+<body>
+    <header>
+        <h1>добро пожаловать</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'categories' %}">Categories</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,29 @@
+{% extends 'posts/base.html' %}
+
+{% block title %} домашняя страница {% endblock %}
+
+{% block content %}
+    <section>
+        <h2>все посты</h2>
+        <ul>
+            {% for post in posts %}
+                <li>
+                    <h3>{{ post.title }}</h3>
+                    <p>{{ post.content }}</p>
+                    <a href="{% url 'post_detail' post.id %}">посмотреть</a>
+                    <a href="{% url 'edit_post' post.id %}">редактировать</a>
+                    <a href="{% url 'delete_post' post.id %}">удалить</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </section>
+
+    <section>
+        <h2>добавить пост</h2>
+        <form method="post" action="{% url 'add_post' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">добавить</button>
+        </form>
+    </section>
+{% endblock %}
